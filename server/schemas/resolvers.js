@@ -53,5 +53,22 @@ module.exports = {
       await models.User.create(args);
       return 'User created successfully';
     },
+
+    async deleteUser(root, args) {
+      let user = await models.User.findOne({
+        where: {
+          id: args.userId,
+        },
+      });
+      if (!user) {
+        return 'User not found';
+      }
+      await models.User.destroy({
+        where: {
+          id: args.userId,
+        },
+      });
+      return 'User deleted successfully';
+    },
   },
 };

@@ -14,5 +14,6 @@ module.exports = gql`
 
   type Mutation {
     createUser(username: String!, password: String!): String!
+    deleteUser(userId: ID!): String!
   }
 `;
