@@ -9,6 +9,7 @@ module.exports = gql`
 
   type Query {
     getAllUsers: [User!]!
+    getUserById(userId: ID!): User!
   }
 
   type Mutation {

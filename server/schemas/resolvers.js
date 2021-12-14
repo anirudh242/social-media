@@ -8,6 +8,7 @@ module.exports = {
       let users = await models.User.findAll({});
       console.log(users);
       let returnUsers = [];
+      // eg: {userId: 1, username: 'test', password: 'test'}
       users.forEach((user) => {
         returnUsers.push({
           userId: user.id,
@@ -16,6 +17,19 @@ module.exports = {
         });
       });
       return returnUsers;
+    },
+
+    async getUserById(parent, args) {
+      let user = await models.User.findOne({
+        where: {
+          id: args.userId,
+        },
+      });
+      return {
+        userId: user.id,
+        username: user.username,
+        password: user.password,
+      };
     },
   },
 
