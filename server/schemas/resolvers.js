@@ -34,9 +34,12 @@ module.exports = {
   },
 
   Mutation: {
-    createUser(root, args) {
+    async createUser(root, args) {
       try {
-        models.User.create(args);
+        // Generate salt
+        const salt = bcrypt.genSaltSync(10);
+        args.password = bcrypt.hashSync(args.password, salt);
+        await models.User.create(args);
         return true;
       } catch {
         return false;
