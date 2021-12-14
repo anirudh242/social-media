@@ -35,15 +35,23 @@ module.exports = {
 
   Mutation: {
     async createUser(root, args) {
-      try {
-        // Generate salt
-        const salt = bcrypt.genSaltSync(10);
-        args.password = bcrypt.hashSync(args.password, salt);
-        await models.User.create(args);
-        return true;
-      } catch {
-        return false;
+      // If username already exists, return false
+      // else, create new user and return true
+      let user = await models.User.findOne({
+        where: {
+          username: args.username,
+        },
+      });
+      if (user) {
+        return 'Username already exists';
       }
+      if (args.password.length == 0) {
+        return 'Password must not be empty';
+      }
+      const salt = bcrypt.genSaltSync(10);
+      args.password = bcrypt.hashSync(args.password, salt);
+      await models.User.create(args);
+      return 'User created successfully';
     },
   },
 };
