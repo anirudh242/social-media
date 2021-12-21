@@ -1,6 +1,8 @@
-const { users } = require('../FakeData');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 const models = require('../models');
+const { JWT_SECRET } = require('../config');
 
 module.exports = {
   Query: {
@@ -69,6 +71,28 @@ module.exports = {
         },
       });
       return 'User deleted successfully';
+    },
+
+    login(root, args) {
+      return models.User.findOne({
+        where: {
+          username: args.username,
+        },
+      }).then((user) => {
+        if (!user) {
+          return 'User not found';
+        } else {
+          console.log(user);
+        }
+        if (bcrypt.compareSync(args.password, user.password)) {
+          return jwt.sign({ userId: user.id }, JWT_SECRET, {
+            expiresIn: '1w',
+            algorithm: 'HS256',
+          });
+        } else {
+          return 'Incorrect password';
+        }
+      });
     },
   },
 };
