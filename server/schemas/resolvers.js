@@ -16,6 +16,11 @@ module.exports = {
           userId: user.id,
           username: user.username,
           password: user.password,
+          posts: models.Post.findAll({
+            where: {
+              userId: user.id,
+            },
+          }),
         });
       });
       return returnUsers;
@@ -32,6 +37,15 @@ module.exports = {
         username: user.username,
         password: user.password,
       };
+    },
+
+    async userPosts(parent, args) {
+      let posts = await models.Post.findAll({
+        where: {
+          userId: args.userId,
+        },
+      });
+      return posts;
     },
   },
 
@@ -52,7 +66,7 @@ module.exports = {
       }
       const salt = bcrypt.genSaltSync(10);
       args.password = bcrypt.hashSync(args.password, salt);
-      await models.User.create(args);
+      await models.User.create({ ...args, posts: [] });
       return 'User created successfully';
     },
 
@@ -93,6 +107,28 @@ module.exports = {
           return 'Incorrect password';
         }
       });
+    },
+
+    async createPost(root, args) {
+      let user = await models.User.findOne({
+        where: {
+          id: args.userId,
+        },
+      });
+      if (!user) {
+        return 'User not found';
+      }
+      try {
+        await models.Post.create({
+          title: args.title,
+          content: args.content,
+          userId: args.userId,
+        });
+
+        return 'Post created successfully';
+      } catch (err) {
+        throw new Error(err);
+      }
     },
   },
 };

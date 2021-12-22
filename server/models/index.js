@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const post = require('./post');
 const user = require('./user');
 
 const sequelize = new Sequelize('blog', 'postgres', '1234', {
@@ -8,6 +9,7 @@ const sequelize = new Sequelize('blog', 'postgres', '1234', {
 
 const models = {
   User: user(sequelize, Sequelize),
+  Post: post(sequelize, Sequelize),
 };
 
 Object.keys(models).forEach((modelName) => {

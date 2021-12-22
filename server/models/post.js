@@ -1,40 +1,37 @@
-const post = require('./post');
-
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
+  const Post = sequelize.define(
+    'Post',
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      username: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-      },
-      password: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      posts: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
+      content: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
     {
-      tableName: 'users',
+      tableName: 'posts',
       timestamps: false,
     }
   );
 
-  User.associate = (models) => {
-    User.hasMany(models.Post, {
+  Post.associate = (models) => {
+    Post.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'users',
     });
   };
-  User.sync();
-  return User;
+  Post.sync();
+  return Post;
 };
