@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
 const post = require('./post');
 const user = require('./user');
+const { pgDbName, pgHost, pgUserName, pgPassword } = require('../config');
 
-const sequelize = new Sequelize('blog', 'postgres', '1234', {
-  host: 'localhost',
+const sequelize = new Sequelize(pgDbName, pgUserName, pgPassword, {
+  host: pgHost,
   dialect: 'postgres',
 });
 

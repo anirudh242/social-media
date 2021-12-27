@@ -26,7 +26,7 @@ module.exports = {
       return returnUsers;
     },
 
-    async getUserById(parent, args) {
+    async getUserById(_parent, args) {
       let user = await models.User.findOne({
         where: {
           id: args.userId,
@@ -39,7 +39,7 @@ module.exports = {
       };
     },
 
-    async userPosts(parent, args) {
+    async userPosts(_parent, args) {
       let posts = await models.Post.findAll({
         where: {
           userId: args.userId,
@@ -50,7 +50,7 @@ module.exports = {
   },
 
   Mutation: {
-    async createUser(root, args) {
+    async createUser(_root, args) {
       // If username already exists, return false
       // else, create new user and return true
       let user = await models.User.findOne({
@@ -70,7 +70,7 @@ module.exports = {
       return 'User created successfully';
     },
 
-    async deleteUser(root, args) {
+    async deleteUser(_root, args) {
       let user = await models.User.findOne({
         where: {
           id: args.userId,
@@ -87,7 +87,7 @@ module.exports = {
       return 'User deleted successfully';
     },
 
-    login(root, args) {
+    login(_root, args) {
       return models.User.findOne({
         where: {
           username: args.username,
@@ -109,7 +109,7 @@ module.exports = {
       });
     },
 
-    async createPost(root, args) {
+    async createPost(_root, args) {
       let user = await models.User.findOne({
         where: {
           id: args.userId,
