@@ -99,6 +99,7 @@ module.exports = {
           console.log(user);
         }
         if (bcrypt.compareSync(args.password, user.password)) {
+          req.user = user;
           return jwt.sign({ userId: user.id }, JWT_SECRET, {
             expiresIn: '1w',
             algorithm: 'HS256',

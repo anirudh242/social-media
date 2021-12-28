@@ -9,6 +9,8 @@ const express = require('express');
 const expressJwt = require('express-jwt');
 const app = express();
 
+const cors = require('cors');
+
 // Other
 const resolvers = require('./schemas/resolvers');
 const typeDefs = require('./schemas/typeDefs');
@@ -22,6 +24,8 @@ app.use(
     credentialsRequired: false,
   })
 );
+
+app.use(cors());
 
 async function startServer() {
   const server = new ApolloServer({
