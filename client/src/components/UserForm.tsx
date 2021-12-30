@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { gql, useMutation } from '@apollo/client';
+
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import '../App.css';
 
@@ -11,8 +13,9 @@ const createUser = gql`
 `;
 
 const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const [addUser] = useMutation(createUser);
 
@@ -24,6 +27,7 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
     addUser({ variables: { username, password } });
 
     console.log('user created');
+    navigate('../login');
   };
 
   return (
