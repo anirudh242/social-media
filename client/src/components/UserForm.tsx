@@ -10,7 +10,7 @@ const createUser = gql`
   }
 `;
 
-const UserForm: React.FC = () => {
+const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -51,7 +51,11 @@ const UserForm: React.FC = () => {
           />
         </label>
         <br />
-        <input type="submit" />
+        {isLoginForm ? (
+          <input type="submit" value="Login" />
+        ) : (
+          <input type="submit" />
+        )}
       </form>
     </div>
   );

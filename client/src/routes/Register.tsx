@@ -6,7 +6,7 @@ const Register: React.FC = () => {
   return (
     <div className="App">
       <h1>Register</h1>
-      <UserForm />
+      <UserForm isLoginForm={false} />
     </div>
   );
 };
