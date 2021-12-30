@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { gql, useMutation } from '@apollo/client';
 
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import '../App.css';
 
