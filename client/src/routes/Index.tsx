@@ -4,7 +4,7 @@ import '../App.css';
 
 const Index: React.FC = () => {
   return (
-    <div>
+    <div className="App">
       <h1>Index</h1>
       <Link to="/home">Home</Link>
       <br />
