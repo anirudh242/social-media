@@ -16,8 +16,6 @@ const typeDefs = require('./schemas/typeDefs');
 const models = require('./models');
 
 async function startServer() {
-  app.use(cors);
-
   const server = new ApolloServer({
     typeDefs,
     resolvers,
