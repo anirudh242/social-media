@@ -87,27 +87,46 @@ module.exports = {
       return 'User deleted successfully';
     },
 
-    login(_root, args) {
-      return models.User.findOne({
+    async login(_root, args) {
+      // console.log(args);
+
+      // let user = models.User.findOne({
+      //   where: {
+      //     username: args.username,
+      //   },
+      // });
+
+      // if (!user) {
+      //   return 'User not found';
+      // } else {
+      //   console.log(user);
+      // }
+      // if (bcrypt.compareSync(args.password, user.password)) {
+      //   return jwt.sign({ userId: user.id }, JWT_SECRET, {
+      //     expiresIn: '1w',
+      //     algorithm: 'HS256',
+      //   });
+      // } else {
+      //   return 'Incorrect password';
+      // }
+
+      // Log the user in
+      let user = await models.User.findOne({
         where: {
           username: args.username,
         },
-      }).then((user) => {
-        if (!user) {
-          return 'User not found';
-        } else {
-          console.log(user);
-        }
-        if (bcrypt.compareSync(args.password, user.password)) {
-          req.user = user;
-          return jwt.sign({ userId: user.id }, JWT_SECRET, {
-            expiresIn: '1w',
-            algorithm: 'HS256',
-          });
-        } else {
-          return 'Incorrect password';
-        }
       });
+      if (!user) {
+        return 'User not found';
+      }
+      if (bcrypt.compareSync(args.password, user.password)) {
+        return jwt.sign({ userId: user.id }, JWT_SECRET, {
+          expiresIn: '1w',
+          algorithm: 'HS256',
+        });
+      } else {
+        return 'Incorrect password';
+      }
     },
 
     async createPost(_root, args) {

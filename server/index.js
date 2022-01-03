@@ -6,7 +6,6 @@ const {
 
 // Express
 const express = require('express');
-const expressJwt = require('express-jwt');
 const app = express();
 
 const cors = require('cors');
@@ -15,19 +14,10 @@ const cors = require('cors');
 const resolvers = require('./schemas/resolvers');
 const typeDefs = require('./schemas/typeDefs');
 const models = require('./models');
-const { JWT_SECRET } = require('./config');
-
-app.use(
-  expressJwt({
-    secret: JWT_SECRET,
-    algorithms: ['HS256'],
-    credentialsRequired: false,
-  })
-);
-
-app.use(cors());
 
 async function startServer() {
+  app.use(cors);
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
