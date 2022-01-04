@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import { gql, useMutation } from '@apollo/client';
-
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 import '../App.css';
 
@@ -12,14 +11,24 @@ const createUser = gql`
   }
 `;
 
+const login = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password)
+  }
+`;
+
 const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const [cookies, setCookies, removeCookies] = useCookies(['token']);
+
   const navigate = useNavigate();
 
   const [addUser] = useMutation(createUser);
+  const [loginUser, { data }] = useMutation(login);
 
-  const handleSubmit = (e: React.SyntheticEvent): void => {
+  const handleRegisterSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     console.log('username: ', username);
     console.log('password: ', password);
@@ -30,9 +39,29 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
     navigate('../login');
   };
 
+  const handleLoginSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    loginUser({ variables: { username, password } }).then((data) => {
+      const authToken = data.data.login;
+      setCookies('token', authToken, { path: '/' });
+      console.log('cookie made');
+      navigate('/');
+      console.log(authToken);
+    });
+  };
+
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(event) => {
+          if (isLoginForm) {
+            handleLoginSubmit(event);
+          } else {
+            handleRegisterSubmit(event);
+          }
+        }}
+      >
         <label>
           Username:{' '}
           <input
