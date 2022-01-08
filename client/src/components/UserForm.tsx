@@ -21,7 +21,7 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [cookies, setCookies, removeCookies] = useCookies(['token']);
+  const [cookies, setCookies] = useCookies(['token']);
 
   const navigate = useNavigate();
 
@@ -43,11 +43,20 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
     e.preventDefault();
 
     loginUser({ variables: { username, password } }).then((data) => {
-      const authToken = data.data.login;
-      setCookies('token', authToken, { path: '/' });
-      console.log('cookie made');
-      navigate('/');
-      console.log(authToken);
+      switch (data.data.login) {
+        case 'User not found':
+          console.log('User not found');
+          break;
+        case 'Incorrect password':
+          console.log('Incorrect password');
+          break;
+        default:
+          const authToken = data.data.login;
+          setCookies('token', authToken, { path: '/' });
+          console.log('cookie made');
+          navigate('/home');
+          console.log(authToken);
+      }
     });
   };
 
