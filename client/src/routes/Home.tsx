@@ -13,6 +13,7 @@ const Home: React.FC = () => {
     exp: null,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookies, removeCookies] = useCookies(['token']);
   const navigate = useNavigate();
 
