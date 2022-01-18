@@ -1,4 +1,4 @@
-import { login, createUser } from '../querys';
+import { login, createUser } from '../mutations';
 
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
