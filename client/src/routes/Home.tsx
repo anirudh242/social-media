@@ -1,10 +1,12 @@
+import { useQuery } from '@apollo/client';
 import jwtDecode from 'jwt-decode';
 import React, { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../App.css';
-import userInterface from '../interface';
+import { userInterface, postInterface } from '../interface';
+import { getAllPosts } from '../querys';
 
 const Home: React.FC = () => {
   const [user, setUser] = React.useState<userInterface>({
@@ -15,6 +17,7 @@ const Home: React.FC = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookies, removeCookies] = useCookies(['token']);
+  const { data, loading, error } = useQuery(getAllPosts);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,6 +53,16 @@ const Home: React.FC = () => {
         <>
           <p>You are logged in {user.userId}</p>
           <button onClick={logout}>Logout</button>
+          <br />
+          {loading ? (
+            <p>Loading...</p>
+          ) : error ? (
+            <p>Error</p>
+          ) : (
+            data.getAllPosts.map((post: postInterface) => (
+              <p key={post.id}>{post.title}</p>
+            ))
+          )}
         </>
       ) : (
         <>
