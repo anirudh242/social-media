@@ -47,6 +47,23 @@ module.exports = {
       });
       return posts;
     },
+
+    async getAllPosts() {
+      let posts = await models.Post.findAll({});
+      console.log(posts);
+
+      let returnPosts = [];
+
+      posts.forEach((post) => {
+        returnPosts.push({
+          id: post.id,
+          title: post.title,
+          content: post.content,
+          userId: post.userId,
+        });
+      });
+      return returnPosts;
+    },
   },
 
   Mutation: {

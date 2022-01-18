@@ -19,6 +19,7 @@ module.exports = gql`
     getAllUsers: [User!]!
     getUserById(userId: ID!): User!
     userPosts(userId: ID!): [Post!]!
+    getAllPosts: [Post!]!
   }
 
   type Mutation {
