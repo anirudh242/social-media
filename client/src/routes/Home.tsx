@@ -48,7 +48,7 @@ const Home: React.FC = () => {
       <h1>Home</h1>
       {user.userId !== null ? (
         <>
-          <p>You are logged in {}</p>
+          <p>You are logged in {user.userId}</p>
           <button onClick={logout}>Logout</button>
         </>
       ) : (

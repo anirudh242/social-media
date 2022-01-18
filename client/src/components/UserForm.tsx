@@ -1,21 +1,11 @@
+import { login, createUser } from '../querys';
+
 import React, { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import '../App.css';
-
-const createUser = gql`
-  mutation createUser($username: String!, $password: String!) {
-    createUser(username: $username, password: $password)
-  }
-`;
-
-const login = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password)
-  }
-`;
 
 const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   const [username, setUsername] = useState('');
