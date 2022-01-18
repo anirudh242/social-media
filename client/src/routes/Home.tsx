@@ -31,8 +31,9 @@ const Home: React.FC = () => {
       });
     }
 
-    console.log('cookie: ', cookies);
-    console.log('userid: ', user.userId);
+    if (user.userId !== null) {
+      console.log('you are logged in user ' + user.userId);
+    }
   }, [cookies, removeCookies, user.exp, user.userId]);
 
   const logout = () => {
@@ -52,6 +53,8 @@ const Home: React.FC = () => {
         </>
       ) : (
         <>
+          <p>You are not logged in</p>
+          <br />
           <Link to="/login">Login</Link>
         </>
       )}
