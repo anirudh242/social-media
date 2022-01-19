@@ -1,5 +1,6 @@
 export interface userInterface {
   userId: number | null;
+  username?: string | null;
   iat: number | null;
   exp: number | null;
 }

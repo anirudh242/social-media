@@ -61,7 +61,12 @@ const Home: React.FC = () => {
             <p>Error</p>
           ) : (
             data.getAllPosts.map((post: postInterface) => (
-              <Post id={post.id} title={post.title} userId={post.userId} />
+              <Post
+                id={post.id}
+                title={post.title}
+                userId={post.userId}
+                content={post.content}
+              />
             ))
           )}
         </>

@@ -10,3 +10,11 @@ export const getAllPosts = gql`
     }
   }
 `;
+
+export const getUserById = gql`
+  query getUserById($userId: Int!) {
+    getUserById(userId: $userId) {
+      username
+    }
+  }
+`;
