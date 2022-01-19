@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../App.css';
+import Post from '../components/Post';
 import { userInterface, postInterface } from '../interface';
 import { getAllPosts } from '../querys';
 
@@ -60,7 +61,7 @@ const Home: React.FC = () => {
             <p>Error</p>
           ) : (
             data.getAllPosts.map((post: postInterface) => (
-              <p key={post.id}>{post.title}</p>
+              <Post id={post.id} title={post.title} userId={post.userId} />
             ))
           )}
         </>
