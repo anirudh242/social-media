@@ -11,9 +11,20 @@ const Post: React.FC<postInterface> = ({ id, title, userId, content }) => {
   });
 
   return (
-    <div>
-      {data ? data.getUserById.username : 'loading'} {id} {title} {userId}{' '}
-    </div>
+    <>
+      {data ? (
+        <div className="post">
+          <text>@{data.getUserById.username}</text> <br />
+          <b className="postCardTitle">{title}</b>
+        </div>
+      ) : loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error</div>
+      ) : (
+        <div>No posts</div>
+      )}
+    </>
   );
 };
 

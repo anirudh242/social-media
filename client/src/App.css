@@ -56,3 +56,20 @@
   border-color: #719ece;
   box-shadow: 0 0 10px #719ece;
 }
+
+.post {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  background-color: #fafafa;
+  width: 30%;
+  text-align: left;
+}
+
+.postCardTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
