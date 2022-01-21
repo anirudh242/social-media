@@ -4,8 +4,8 @@ import '../App.css';
 
 const Index: React.FC = () => {
   return (
-    <div className="text-center">
-      <h1 className="text-2xl font-bold underline">Index</h1>
+    <div>
+      <h1 className="text-4xl font-bold">Index</h1>
       <Link to="/home">Home</Link>
       <br />
       <Link to="/login">Login</Link>
