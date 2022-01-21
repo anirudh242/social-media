@@ -48,7 +48,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="text-center">
       <h1 className="pageHeader">Home</h1>
       {user.userId !== null ? (
         <>

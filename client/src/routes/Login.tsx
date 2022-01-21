@@ -4,7 +4,7 @@ import UserForm from '../components/UserForm';
 
 const Login: React.FC = () => {
   return (
-    <div className="App">
+    <div className="text-center">
       <h1 className="pageHeader">Login</h1>
       <UserForm isLoginForm />
     </div>
