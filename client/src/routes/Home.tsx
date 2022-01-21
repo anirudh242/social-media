@@ -48,8 +48,8 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <h1>Home</h1>
+    <div>
+      <h1 className="pageHeader">Home</h1>
       {user.userId !== null ? (
         <>
           <p>You are logged in {user.userId}</p>
