@@ -74,7 +74,9 @@ const Home: React.FC = () => {
         <>
           <p>You are not logged in</p>
           <br />
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="btn">
+            Login
+          </Link>
         </>
       )}
     </div>

@@ -16,11 +16,39 @@
 
   li {
     display: inline;
-    padding: 10px;
     color: #fff;
     font-size: 20px;
+    margin-right: 10px;
   }
   li:hover {
     text-decoration: underline;
+  }
+
+  .btn {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+    padding: 0.5rem /* 8px */;
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    border-radius: 0.5rem /* 8px */;
+    font-weight: 500;
+  }
+
+  .btn:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  /* Click of button */
+  .btn:active {
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
   }
 }
