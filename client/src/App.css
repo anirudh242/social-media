@@ -8,6 +8,10 @@
 }
 
 @layer components {
+  label {
+    font-weight: 600;
+  }
+
   .pageHeader {
     font-size: 2.25rem /* 36px */;
     line-height: 2.5rem /* 40px */;

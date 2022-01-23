@@ -51,7 +51,7 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   };
 
   return (
-    <div className="App">
+    <div className="border-2 rounded-lg w-96 m-auto border-gray-400 p-2 grid h-56 items-center">
       <form
         onSubmit={(event) => {
           if (isLoginForm) {
@@ -61,32 +61,36 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
           }
         }}
       >
-        <label>
+        <label htmlFor="username">
           Username:{' '}
           <input
             type="text"
-            className="formInput"
+            name="username"
+            className="border-2 rounded-md border-gray-300 p-2 "
             onChange={(e) => {
               setUsername(e.target.value);
             }}
           />
         </label>
         <br />
-        <label>
+        <br />
+        <label htmlFor="password">
           Password:{' '}
           <input
-            type="text"
-            className="formInput"
+            type="password"
+            name="password"
+            className="border-2 rounded-md border-gray-300 p-2 mb-2 "
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
         </label>
+
         <br />
         {isLoginForm ? (
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" className="btn" />
         ) : (
-          <input type="submit" />
+          <input type="submit" className="btn" />
         )}
       </form>
     </div>
