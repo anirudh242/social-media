@@ -53,7 +53,9 @@ const Home: React.FC = () => {
       {user.userId !== null ? (
         <>
           <p>You are logged in {user.userId}</p>
-          <button onClick={logout}>Logout</button>
+          <button onClick={logout} className="btn">
+            Logout
+          </button>
           <br />
           {loading ? (
             <p>Loading...</p>
