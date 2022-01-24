@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import jwtDecode from 'jwt-decode';
 import React, { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../App.css';
 import Post from '../components/Post';
@@ -19,7 +19,6 @@ const Home: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookies, removeCookies] = useCookies(['token']);
   const { data, loading, error } = useQuery(getAllPosts);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (cookies.token) {
@@ -40,22 +39,12 @@ const Home: React.FC = () => {
     }
   }, [cookies, removeCookies, user.exp, user.userId]);
 
-  const logout = () => {
-    console.log('logout');
-    removeCookies('token');
-    // navigate to login
-    navigate('/login');
-  };
-
   return (
     <div className="text-center">
       <h1 className="pageHeader">Home</h1>
       {user.userId !== null ? (
         <>
           <p>You are logged in {user.userId}</p>
-          <button onClick={logout} className="btn">
-            Logout
-          </button>
           <br />
           {loading ? (
             <p>Loading...</p>

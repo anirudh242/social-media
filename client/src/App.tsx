@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -8,11 +9,22 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 
 const App: React.FC = () => {
+  const [cookies] = useCookies(['token']);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
+
+  useEffect(() => {
+    if (cookies.token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [cookies.token]);
+
   return (
     <>
       <BrowserRouter>
         {' '}
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <br />
         <br />
         <br />
