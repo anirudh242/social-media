@@ -2,6 +2,7 @@ import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ isLoggedIn }: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookies, removeCookies] = useCookies(['token']);
   const navigate = useNavigate();
 
