@@ -29,9 +29,9 @@ const Post: React.FC<postInterface> = ({
       {data ? (
         <div
           onClick={postClick}
-          className="cursor-pointer text-left 
+          className="postCard cursor-pointer text-left 
           border-2 w-72 self mx-auto p-6 rounded-lg shadow-lg mb-2
-          hover:scale-110 ease-linear transition-all duration-75"
+          hover:scale-110 ease-linear transition-all duration-75 active:scale-100"
         >
           <div>
             <Link to={`/user/${userId}`}>
