@@ -66,7 +66,7 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
           <input
             type="text"
             name="username"
-            className="border-2 rounded-md border-gray-300 p-2 "
+            className="border-2 rounded-md border-gray-300 p-2"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
