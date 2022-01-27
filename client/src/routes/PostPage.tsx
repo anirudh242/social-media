@@ -5,7 +5,7 @@ import { getPostById } from '../querys';
 const PostPage = () => {
   const postId = useParams<{ postId: string }>().postId;
 
-  const { data, loading, error } = useQuery(getPostById, {
+  const { data, loading } = useQuery(getPostById, {
     variables: {
       postId,
     },
@@ -16,6 +16,12 @@ const PostPage = () => {
       {data ? (
         <>
           <h1 className="pageHeader">{data.getPostById.title}</h1>
+          {data.getPostById.description ? (
+            <p className="text-gray-500">{data.getPostById.description}</p>
+          ) : (
+            <></>
+          )}
+          <br />
           <p>{data.getPostById.content}</p>
         </>
       ) : loading ? (

@@ -73,6 +73,7 @@ module.exports = {
           title: post.title,
           content: post.content,
           userId: post.userId,
+          description: post.description,
         });
       });
       return returnPosts;
@@ -151,6 +152,7 @@ module.exports = {
           title: args.title,
           content: args.content,
           userId: args.userId,
+          description: args.description,
         });
 
         return 'Post created successfully';

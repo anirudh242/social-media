@@ -35,6 +35,5 @@ module.exports = (sequelize, DataTypes) => {
       as: 'users',
     });
   };
-  User.sync();
   return User;
 };

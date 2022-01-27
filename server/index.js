@@ -30,6 +30,6 @@ async function startServer() {
   });
 }
 
-models.sequelize.sync({}).then(() => {
+models.sequelize.sync().then(() => {
   startServer();
 });

@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       content: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,6 +36,5 @@ module.exports = (sequelize, DataTypes) => {
       as: 'users',
     });
   };
-  Post.sync();
   return Post;
 };

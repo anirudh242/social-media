@@ -12,6 +12,7 @@ module.exports = gql`
     id: ID!
     title: String!
     content: String!
+    description: String
     userId: Int!
   }
 
@@ -27,6 +28,11 @@ module.exports = gql`
     createUser(username: String!, password: String!): String!
     deleteUser(userId: ID!): String!
     login(username: String!, password: String!): String
-    createPost(title: String!, content: String!, userId: Int!): String!
+    createPost(
+      title: String!
+      content: String!
+      userId: Int!
+      description: String
+    ): String!
   }
 `;

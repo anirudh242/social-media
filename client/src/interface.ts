@@ -8,6 +8,7 @@ export interface userInterface {
 export interface postInterface {
   id: number | null;
   title: string | null;
-  content: string | null;
+  content?: string | null;
   userId: number | null;
+  description?: string | null;
 }

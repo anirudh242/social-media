@@ -6,13 +6,14 @@ export const getAllPosts = gql`
       id
       title
       content
+      description
       userId
     }
   }
 `;
 
 export const getUsernameById = gql`
-  query getUsernameById($userId: Int!) {
+  query getUsernameById($userId: ID!) {
     getUserById(userId: $userId) {
       username
     }
@@ -40,6 +41,7 @@ export const getPostById = gql`
       title
       content
       userId
+      description
     }
   }
 `;

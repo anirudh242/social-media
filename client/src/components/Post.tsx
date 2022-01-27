@@ -4,7 +4,13 @@ import { postInterface } from '../interface';
 import { getUsernameById } from '../querys';
 import { useNavigate } from 'react-router-dom';
 
-const Post: React.FC<postInterface> = ({ id, title, userId, content }) => {
+const Post: React.FC<postInterface> = ({
+  id,
+  title,
+  userId,
+  description,
+  content,
+}) => {
   // execute getuserbyid query
   const { data, loading, error } = useQuery(getUsernameById, {
     variables: {
@@ -35,12 +41,20 @@ const Post: React.FC<postInterface> = ({ id, title, userId, content }) => {
             </Link>
             <br />
             <b className="font-extrabold text-xl">{title}</b>
+            {description !== null ? (
+              <>
+                <br />
+                <text className="text-xs text-gray-500">{description}</text>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       ) : loading ? (
         <div>Loading...</div>
       ) : error ? (
-        <div>Error</div>
+        <div>{error.message}</div>
       ) : (
         <div>No posts</div>
       )}

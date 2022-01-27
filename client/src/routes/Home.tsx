@@ -48,17 +48,20 @@ const Home: React.FC = () => {
           <br />
           {loading ? (
             <p>Loading...</p>
-          ) : error ? (
-            <p>Error</p>
-          ) : (
+          ) : // ) : error ? (
+          //   <p>hi</p>
+          //
+          data ? (
             data.getAllPosts.map((post: postInterface) => (
               <Post
                 id={post.id}
                 title={post.title}
                 userId={post.userId}
-                content={post.content}
+                description={post.description}
               />
             ))
+          ) : (
+            <p>No posts</p>
           )}
         </>
       ) : (
