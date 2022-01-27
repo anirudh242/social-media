@@ -33,3 +33,13 @@ export const getUserById = gql`
     }
   }
 `;
+
+export const getPostById = gql`
+  query getPostById($postId: ID!) {
+    getPostById(postId: $postId) {
+      title
+      content
+      userId
+    }
+  }
+`;
