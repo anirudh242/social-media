@@ -6,6 +6,14 @@ const { JWT_SECRET } = require('../config');
 
 module.exports = {
   Query: {
+    async getPostById(_, { postId }) {
+      const post = await models.Post.findOne({
+        where: { id: postId },
+      });
+
+      return post;
+    },
+
     async getAllUsers() {
       let users = await models.User.findAll({});
       console.log(users);
