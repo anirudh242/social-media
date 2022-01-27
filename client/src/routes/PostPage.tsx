@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
 import { getPostById } from '../querys';
 
@@ -22,7 +23,7 @@ const PostPage = () => {
             <></>
           )}
           <br />
-          <p>{data.getPostById.content}</p>
+          <ReactMarkdown>{data.getPostById.content}</ReactMarkdown>
         </>
       ) : loading ? (
         <h1 className="pageHeader">Loading...</h1>

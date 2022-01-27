@@ -16,7 +16,7 @@ const UserForm: React.FC<{ isLoginForm: boolean }> = ({ isLoginForm }) => {
   const navigate = useNavigate();
 
   const [addUser] = useMutation(createUser);
-  const [loginUser, { data }] = useMutation(login);
+  const [loginUser] = useMutation(login);
 
   const handleRegisterSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
