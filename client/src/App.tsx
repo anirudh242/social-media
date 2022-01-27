@@ -6,7 +6,9 @@ import Navbar from './components/Navbar';
 import Home from './routes/Home';
 import Index from './routes/Index';
 import Login from './routes/Login';
+import PostPage from './routes/PostPage';
 import Register from './routes/Register';
+import UserProfile from './routes/UserProfile';
 
 const App: React.FC = () => {
   const [cookies] = useCookies(['token']);
@@ -33,6 +35,8 @@ const App: React.FC = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/user/:userId" element={<UserProfile />} />
+          <Route path="/post/:postId" element={<PostPage />} />
         </Routes>
       </BrowserRouter>
     </>

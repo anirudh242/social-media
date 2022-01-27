@@ -29,13 +29,18 @@ module.exports = {
     async getUserById(_parent, args) {
       let user = await models.User.findOne({
         where: {
-          id: args.userId,
+          id: +args.userId,
         },
       });
       return {
         userId: user.id,
         username: user.username,
         password: user.password,
+        posts: models.Post.findAll({
+          where: {
+            userId: user.id,
+          },
+        }),
       };
     },
 
