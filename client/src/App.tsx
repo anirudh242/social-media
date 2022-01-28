@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './routes/Home';
 import Index from './routes/Index';
 import Login from './routes/Login';
+import NewPost from './routes/NewPost';
 import PostPage from './routes/PostPage';
 import Register from './routes/Register';
 import UserProfile from './routes/UserProfile';
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/user/:userId" element={<UserProfile />} />
           <Route path="/post/:postId" element={<PostPage />} />
+          <Route path="/new-post" element={<NewPost />} />
         </Routes>
       </BrowserRouter>
     </>
