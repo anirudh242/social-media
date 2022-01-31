@@ -15,7 +15,7 @@ const Navbar = ({ isLoggedIn }: any) => {
 
   return (
     <div className="font-medium bg-gray-900 p-3 fixed w-screen top-0 z-10 ">
-      <ul>
+      <ul className="navUl">
         <li className="mr-5">
           <Link to="/home">Home</Link>
         </li>

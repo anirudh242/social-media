@@ -23,7 +23,7 @@ const PostPage = () => {
             <></>
           )}
           <br />
-          <ReactMarkdown>{data.getPostById.content}</ReactMarkdown>
+          <div>{data.getPostById.content}</div>
         </>
       ) : loading ? (
         <h1 className="pageHeader">Loading...</h1>

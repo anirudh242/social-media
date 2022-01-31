@@ -11,3 +11,19 @@ export const login = gql`
     login(username: $username, password: $password)
   }
 `;
+
+export const createPost = gql`
+  mutation createPost(
+    $title: String!
+    $content: String!
+    $userId: Int!
+    $description: String
+  ) {
+    createPost(
+      title: $title
+      content: $content
+      userId: $userId
+      description: $description
+    )
+  }
+`;
