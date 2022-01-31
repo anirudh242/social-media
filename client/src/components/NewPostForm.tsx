@@ -16,10 +16,11 @@ const NewPostForm: React.FC = () => {
 
   const [cookies] = useCookies(['token']);
 
+  const nav = useNavigate();
+
   const [isCreated, setIsCreated] = useState(false);
 
   const [createPostMutation] = useMutation(createPost);
-  const navigate = useNavigate();
 
   let userToken: userInterface = jwtDecode(cookies.token);
   let userId = userToken.userId;
@@ -33,7 +34,10 @@ const NewPostForm: React.FC = () => {
         userId,
       },
     });
-    setIsCreated(true);
+    nav('/home');
+    if (window.location.pathname === '/home') {
+      window.location.reload();
+    }
   };
 
   return (
