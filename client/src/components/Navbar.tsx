@@ -16,13 +16,17 @@ const Navbar = ({ isLoggedIn }: any) => {
   return (
     <div className="font-medium bg-gray-900 p-3 fixed w-screen top-0 z-10 ">
       <ul className="navUl">
-        <li className="mr-5">
+        <li className="">
           <Link to="/home">Home</Link>
         </li>
-        <li>
+        <li className="ml-3">
           <Link to="/">Index</Link>
-        </li>{' '}
-        <li className="ml-[59rem]">
+        </li>
+        <li className="ml-3">
+          <Link to="/new-post">Create Post</Link>
+        </li>
+        <input type="text" className="w-[50rem] ml-3" />
+        <li className="ml-3 ">
           {isLoggedIn ? (
             <span className="cursor-pointer text-white" onClick={logout}>
               Logout
