@@ -5,7 +5,6 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { userInterface } from '../interface';
 import { createPost } from '../mutations';
-import { Link } from 'react-router-dom';
 
 const NewPostForm: React.FC = () => {
   const limit = 280;
