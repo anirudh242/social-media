@@ -14,7 +14,7 @@ const Navbar = ({ isLoggedIn }: any) => {
   };
 
   return (
-    <div className="font-medium bg-gray-900 p-3 fixed w-screen top-0 z-10 ">
+    <div className="font-medium bg-gray-900 p-2 fixed w-screen top-0 z-10 ">
       <ul className="navUl">
         <li className="">
           <Link to="/home">Home</Link>
@@ -22,10 +22,7 @@ const Navbar = ({ isLoggedIn }: any) => {
         <li className="ml-3">
           <Link to="/">Index</Link>
         </li>
-        <li className="ml-3">
-          <Link to="/new-post">Create Post</Link>
-        </li>
-        <input type="text" className="w-[50rem] ml-3" />
+        <input type="text" className="w-[57rem] ml-3" />
         <li className="ml-3 ">
           {isLoggedIn ? (
             <span className="cursor-pointer text-white" onClick={logout}>
@@ -40,6 +37,9 @@ const Navbar = ({ isLoggedIn }: any) => {
             </span>
           )}
         </li>
+        <Link to="/new-post">
+          <text className="navbarText text-2xl">+</text>
+        </Link>
       </ul>
     </div>
   );

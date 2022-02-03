@@ -20,16 +20,11 @@ const Post: React.FC<postInterface> = ({
 
   const navigate = useNavigate();
 
-  const postClick = () => {
-    navigate(`/post/${id}`);
-  };
-
   return (
     <>
       {data ? (
         <div
-          onClick={postClick}
-          className="Gradient cursor-pointer text-left 
+          className="text-left 
           border-2 w-72 self mx-auto p-6 rounded-lg shadow-lg mb-2
           hover:scale-110 ease-linear transition-all duration-75 active:scale-100"
         >
@@ -40,7 +35,9 @@ const Post: React.FC<postInterface> = ({
               </text>{' '}
             </Link>
             <br />
-            <b className="font-extrabold text-xl">{title}</b>
+            <Link to={`/post/${id}`}>
+              <b className="font-extrabold text-xl hover:underline">{title}</b>
+            </Link>
             {description !== null ? (
               <>
                 <br />

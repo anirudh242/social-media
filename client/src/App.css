@@ -54,8 +54,26 @@
     background-repeat: no-repeat;
     transition: background-size 100ms;
   }
+
   li:hover {
     background-size: 0 0.1em, 100% 0.1em;
+  }
+
+  .navbarText {
+    background: #fff;
+    -webkit-background-clip: text;
+    transition: all 1000ms;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .navbarText:hover {
+    background: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+    );
+    -webkit-background-clip: text;
   }
 
   .btn {
